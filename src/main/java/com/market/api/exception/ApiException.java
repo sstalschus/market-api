@@ -18,9 +18,9 @@ public class ApiException extends RuntimeException {
   /**
    * Creates a new instance, with provided fields.
    *
-   * @param code API error code.
+   * @param code        API error code.
    * @param description API error description.
-   * @param statusCode API error HTTP Status code.
+   * @param statusCode  API error HTTP Status code.
    */
   public ApiException(String code, String description, Integer statusCode) {
     super(description);
@@ -32,10 +32,10 @@ public class ApiException extends RuntimeException {
   /**
    * Creates a new instance, with provided fields.
    *
-   * @param code API error code.
+   * @param code        API error code.
    * @param description API error description.
-   * @param statusCode API error HTTP Status code.
-   * @param cause API error cause.
+   * @param statusCode  API error HTTP Status code.
+   * @param cause       API error cause.
    */
   public ApiException(String code, String description, Integer statusCode, Throwable cause) {
     super(description, cause);
@@ -44,14 +44,14 @@ public class ApiException extends RuntimeException {
     this.statusCode = statusCode;
   }
 
-  /** 
+  /**
    * @return API error code.
    */
   public String getCode() {
     return this.code;
   }
 
-  /** 
+  /**
    * @return API error description.
    */
   public String getDescription() {
@@ -64,4 +64,5 @@ public class ApiException extends RuntimeException {
   public Integer getStatusCode() {
     return this.statusCode;
   }
+
 }

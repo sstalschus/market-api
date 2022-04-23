@@ -1,6 +1,6 @@
 package com.market.api.exception.handler;
 
-import com.market.api.domain.dto.ErrorMessageDTO;
+import com.market.api.controller.dto.ErrorMessageDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  */
 @ControllerAdvice
 public class DefaultExceptionHandler {
-    @ExceptionHandler({Exception.class})
-    public ResponseEntity<?> defaultHandler(){
-        return ResponseEntity.internalServerError().body(new ErrorMessageDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal Server Error"));
-    }
+
+  @ExceptionHandler({Exception.class})
+  public ResponseEntity<?> defaultHandler() {
+    return ResponseEntity.internalServerError()
+        .body(new ErrorMessageDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal Server Error"));
+  }
+
 }

@@ -3,11 +3,11 @@ package com.market.api.exception;
 import org.springframework.http.HttpStatus;
 
 /**
- * Exception containing relevant information for missing params API errors.
+ * Exception containing relevant information for domains of API errors.
  *
  * @author Samuel Stalschus
  */
-public class MissingParamsException extends ApiException {
+public class AlreadyExistsException extends ApiException {
 
   private static final long serialVersionUID = -525546673970530803L;
 
@@ -18,7 +18,7 @@ public class MissingParamsException extends ApiException {
    *
    * @param e cause
    */
-  public MissingParamsException(Throwable e) {
+  public AlreadyExistsException(Throwable e) {
     super(
         BAD_REQUEST_CODE,
         HttpStatus.BAD_REQUEST.getReasonPhrase(),
@@ -32,7 +32,7 @@ public class MissingParamsException extends ApiException {
    * @param message custom message.
    * @param e       cause.
    */
-  public MissingParamsException(String message, Throwable e) {
+  public AlreadyExistsException(String message, Throwable e) {
     super(BAD_REQUEST_CODE, message, HttpStatus.BAD_REQUEST.value(), e);
   }
 
@@ -41,8 +41,9 @@ public class MissingParamsException extends ApiException {
    *
    * @param message custom message.
    */
-  public MissingParamsException(String message) {
+  public AlreadyExistsException(String message) {
     super(BAD_REQUEST_CODE, message, HttpStatus.BAD_REQUEST.value());
   }
 
 }
+

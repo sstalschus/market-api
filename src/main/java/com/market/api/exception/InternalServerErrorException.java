@@ -2,7 +2,7 @@ package com.market.api.exception;
 
 import org.springframework.http.HttpStatus;
 
-/** 
+/**
  * Exception containing relevant information for internal API errors.
  *
  * @author Samuel Stalschus
@@ -30,7 +30,7 @@ public class InternalServerErrorException extends ApiException {
    * Creates a new instance, with provided cause and custom message.
    *
    * @param message custom message.
-   * @param e cause.
+   * @param e       cause.
    */
   public InternalServerErrorException(String message, Throwable e) {
     super(INTERNAL_ERROR_CODE, message, HttpStatus.INTERNAL_SERVER_ERROR.value(), e);
@@ -44,4 +44,5 @@ public class InternalServerErrorException extends ApiException {
   public InternalServerErrorException(String message) {
     super(INTERNAL_ERROR_CODE, message, HttpStatus.INTERNAL_SERVER_ERROR.value());
   }
+
 }
