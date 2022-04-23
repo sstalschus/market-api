@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -26,4 +27,10 @@ public class Product {
 
     @Column
     private String barcode;
+
+    @Column
+    private Integer quantity;
+
+    @Column
+    private BigDecimal price;
 }
