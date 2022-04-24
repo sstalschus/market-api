@@ -50,7 +50,7 @@ public class Product {
 
   @Column
   @Enumerated(EnumType.ORDINAL)
-  private MeasureType measure;
+  private MeasureType measure = MeasureType.UNIT;
 
   @Column
   private String picture;

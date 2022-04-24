@@ -46,13 +46,14 @@ function updateData() {
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
     xhttp.onreadystatechange = function () {
-      if (http.readyState == 4 && xhttp.status == 200) {
+      if (xhttp.readyState == 4 && xhttp.status == 200) {
         data = {
           all: []
         }
         alert("Produto editado")
         findAll()
-      } else if (http.readyState == 4 ) {
+      } else if (xhttp.readyState == 4 ) {
+        alert(xhttp.responseText)
       }
     }
 

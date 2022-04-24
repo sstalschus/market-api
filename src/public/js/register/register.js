@@ -12,8 +12,8 @@ function clearAllFields() {
 }
 
 function sendData() {
-  console.log(data)
   if (verifyData()) {
+    console.log("ok")
     var url = `http://localhost:8080/api/v1/product`
 
     xhttp.open("POST", url, true)
@@ -21,11 +21,11 @@ function sendData() {
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
     xhttp.onreadystatechange = function () {
-      if (http.readyState == 4 && xhttp.status == 201) {
+      if (xhttp.readyState == 4 && xhttp.status == 201) {
         clearAllFields()
         alert("Produto cadastrado")
-      } else if (http.readyState == 4 ) {
-        alert("Erro interno do servidor")
+      } else if (xhttp.readyState == 4 ) {
+        alert(xhttp.responseText)
       }
     }
     console.log(data)
