@@ -10,6 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * The type Brand dto.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,13 +24,23 @@ public class BrandDTO {
   @Size(max = 15, message = "The brand name must be less than 15 characters")
   private String name;
 
-  private String picture;
-
+  /**
+   * Convert brand dto.
+   *
+   * @param brand the brand
+   * @return the brand dto
+   */
   public static BrandDTO convert(Brand brand) {
     return ModelMapperConfig.ModelMapperConfig()
         .map(brand, BrandDTO.class);
   }
 
+  /**
+   * Convert brand.
+   *
+   * @param brandDTO the brand dto
+   * @return the brand
+   */
   public static Brand convert(BrandDTO brandDTO) {
     return ModelMapperConfig.ModelMapperConfig()
         .map(brandDTO, Brand.class);

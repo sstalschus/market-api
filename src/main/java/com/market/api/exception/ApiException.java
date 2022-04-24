@@ -45,6 +45,8 @@ public class ApiException extends RuntimeException {
   }
 
   /**
+   * Gets code.
+   *
    * @return API error code.
    */
   public String getCode() {
@@ -52,6 +54,8 @@ public class ApiException extends RuntimeException {
   }
 
   /**
+   * Gets description.
+   *
    * @return API error description.
    */
   public String getDescription() {
@@ -59,6 +63,8 @@ public class ApiException extends RuntimeException {
   }
 
   /**
+   * Gets status code.
+   *
    * @return API error HTTP Status code.
    */
   public Integer getStatusCode() {

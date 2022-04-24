@@ -6,16 +6,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Brand service.
+ */
 @Service
 public class BrandService {
 
   private final BrandRepository repository;
 
+  /**
+   * Instantiates a new Brand service.
+   *
+   * @param repository the repository
+   */
   @Autowired
   public BrandService(BrandRepository repository) {
     this.repository = repository;
   }
 
+  /**
+   * Create brand.
+   *
+   * @param brand the brand
+   * @return the brand
+   */
   public Brand create(Brand brand) {
     if (brandAlreadyExists(brand))
       return repository.findByName(brand.getName()
@@ -25,6 +39,11 @@ public class BrandService {
     return repository.save(brand);
   }
 
+  /**
+   * Gets all.
+   *
+   * @return the all
+   */
   public List<Brand> getAll() {
     return repository.findAll();
   }

@@ -1,9 +1,12 @@
 package com.market.api.domain;
 
+import com.market.api.domain.enums.MeasureType;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +18,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
+/**
+ * The type Product.
+ */
 @Entity
 @Getter
 @Setter
@@ -40,6 +46,10 @@ public class Product {
 
   @Column
   private BigDecimal price;
+
+  @Column
+  @Enumerated(EnumType.ORDINAL)
+  private MeasureType measure;
 
   @Column
   private String picture;

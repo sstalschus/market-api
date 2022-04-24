@@ -103,6 +103,13 @@ public class AppExceptionHandler {
         .body(new ErrorMessageDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
   }
 
+  /**
+   * Handle persistencia response entity.
+   *
+   * @param ex      the ex
+   * @param request the request
+   * @return the response entity
+   */
   @ResponseStatus(HttpStatus.NOT_FOUND)
   @ExceptionHandler(value = NotFoundException.class)
   protected ResponseEntity<Object> handlePersistencia(NotFoundException ex, WebRequest request) {

@@ -18,19 +18,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type Product controller.
+ */
 @RestController
 @RequestMapping("/product")
 public class ProductController {
 
+  /**
+   * The constant SIZE_PER_PAGE.
+   */
   public static final int SIZE_PER_PAGE = 20;
 
   private final ProductService service;
 
+  /**
+   * Instantiates a new Product controller.
+   *
+   * @param service the service
+   */
   @Autowired
   public ProductController(final ProductService service) {
     this.service = service;
   }
 
+  /**
+   * Create response entity.
+   *
+   * @param productDTO the product dto
+   * @return the response entity
+   */
   @PostMapping
   public ResponseEntity<ProductDTO> create(@Valid @RequestBody final ProductDTO productDTO) {
     Product product = ProductDTO.convert(productDTO);
@@ -38,6 +55,12 @@ public class ProductController {
         .body(ProductDTO.convert(service.create(product)));
   }
 
+  /**
+   * Update response entity.
+   *
+   * @param productDTO the product dto
+   * @return the response entity
+   */
   @PatchMapping
   public ResponseEntity<ProductDTO> update(@Valid @RequestBody final ProductDTO productDTO) {
     Product product = ProductDTO.convert(productDTO);
@@ -45,6 +68,11 @@ public class ProductController {
         .body(ProductDTO.convert(service.update(product)));
   }
 
+  /**
+   * Gets all.
+   *
+   * @return the all
+   */
   @GetMapping
   public ResponseEntity<List<ProductDTO>> getAll() {
     return ResponseEntity.ok(
@@ -55,6 +83,12 @@ public class ProductController {
     );
   }
 
+  /**
+   * Delete by id response entity.
+   *
+   * @param id the id
+   * @return the response entity
+   */
   @DeleteMapping(value = "/{id}")
   public ResponseEntity deleteById(@PathVariable Long id) {
     service.deleteById(id);

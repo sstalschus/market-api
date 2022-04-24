@@ -16,6 +16,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
+/**
+ * The type Brand.
+ */
 @Entity
 @Getter
 @Setter
@@ -32,9 +35,6 @@ public class Brand {
 
   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private List<Product> products;
-
-  @Column
-  private String picture;
 
   @Column(nullable = false, updatable = false)
   @CreationTimestamp

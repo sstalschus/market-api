@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class DefaultExceptionHandler {
 
+  /**
+   * Default handler response entity.
+   *
+   * @return the response entity
+   */
   @ExceptionHandler({Exception.class})
   public ResponseEntity<?> defaultHandler() {
     return ResponseEntity.internalServerError()
