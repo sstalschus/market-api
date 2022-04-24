@@ -1,0 +1,51 @@
+<div style="margin-left: 10%; margin-right: 10%; margin-top: 5%;">
+  <form>
+
+    <h4>Dados do produto:</h4>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Nome</label>
+        <input id="name" type="text" class="form-control" placeholder="Digite o nome do produto">
+        <small class="form-text text-muted">Escreva aqui o nome do produto</small>
+      </div>
+      <div class="col">
+        <label>Código de barras</label>
+        <input type="text" id="barcode" class="form-control" placeholder="Digite o código de barras">
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <label>Preço</label>
+        <input id="price" type="text" class="form-control" placeholder="Digite a marca do produto">
+      </div>
+      <div class="col">
+        <label>Quantidade</label>
+        <input type="text" id="quantity" class="form-control" placeholder="Digite a quantidade">
+      </div>
+      <div class="col">
+        <label>Fornecedor</label>
+        <input type="text" id="brand" class="form-control" placeholder="Digite o fornecedor">
+      </div>
+    </div>
+    <br>
+    <h6>Medida:</h6>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="unit" value="UNIT" checked>
+      <label class="form-check-label" for="unit">
+        Unidade
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="kg" value="KG">
+      <label class="form-check-label" for="kg">
+        Kg
+      </label>
+    </div>
+    <br>
+    <button type="button" onclick="sendData()" class="btn btn-secondary">Cadastrar</button>
+  </form>
+</div>
+<script src="../js/register/register.js"></script>

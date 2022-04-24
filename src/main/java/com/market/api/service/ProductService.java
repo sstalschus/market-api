@@ -75,6 +75,11 @@ public class ProductService {
     return repository.findAll();
   }
 
+
+  public List<Product> getByName(String name) {
+    return repository.findByNameContains(name);
+  }
+
   /**
    * Delete by id.
    *
