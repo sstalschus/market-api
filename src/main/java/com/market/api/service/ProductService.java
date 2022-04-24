@@ -63,6 +63,9 @@ public class ProductService {
    */
   public Product update(Product product) {
     findById(product.getId());
+    Brand brand = brandService.getByName(product.getBrand()
+        .getName());
+    product.setBrand(brand);
     return repository.save(product);
   }
 

@@ -48,6 +48,10 @@ public class BrandService {
     return repository.findAll();
   }
 
+  public Brand getByName(String name) {
+    return repository.findByName(name);
+  }
+
   private boolean brandAlreadyExists(Brand brand) {
     return repository.findByName(brand.getName()
         .toUpperCase()) != null;

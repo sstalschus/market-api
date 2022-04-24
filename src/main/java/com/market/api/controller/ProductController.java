@@ -65,7 +65,7 @@ public class ProductController {
   @PatchMapping
   public ResponseEntity<ProductDTO> update(@Valid @RequestBody final ProductDTO productDTO) {
     Product product = ProductDTO.convert(productDTO);
-    return ResponseEntity.status(HttpStatus.NON_AUTHORITATIVE_INFORMATION)
+    return ResponseEntity.status(HttpStatus.OK)
         .body(ProductDTO.convert(service.update(product)));
   }
 

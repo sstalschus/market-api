@@ -19,11 +19,58 @@
           <th scope="col">Código de barras</th>
           <th scope="col">Preço</th>
           <th scope="col">Quantidade</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody id="tbody">
       </tbody>
     </table>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar produto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col">
+              <label>Nome</label>
+              <input id="name" type="text" class="form-control" placeholder="Digite o nome do produto">
+              <small class="form-text text-muted">Escreva aqui o nome do produto</small>
+            </div>
+            <div class="col">
+              <label>Código de barras</label>
+              <input type="text" id="barcode" class="form-control" placeholder="Digite o código de barras">
+            </div>
+          </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col">
+            <label>Preço</label>
+            <input id="price" type="text" class="form-control" placeholder="Digite a marca do produto">
+          </div>
+          <div class="col">
+            <label>Quantidade</label>
+            <input type="text" id="quantity" class="form-control" placeholder="Digite a quantidade">
+          </div>
+          <div class="col">
+            <label>Fornecedor</label>
+            <input type="text" id="brand" class="form-control" placeholder="Digite o fornecedor">
+          </div>
+        </div>
+        <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" onclick="updateData()" class="btn btn-outline-success">Salvar mudanças</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="alert alert-danger" role="alert" id="myAlert" style="margin-left: 10%; margin-right: 10%; display: none;">
