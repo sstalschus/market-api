@@ -48,6 +48,12 @@ public class BrandService {
     return repository.findAll();
   }
 
+  /**
+   * Gets by name.
+   *
+   * @param name the name
+   * @return the by name
+   */
   public Brand getByName(String name) {
     return repository.findByName(name);
   }

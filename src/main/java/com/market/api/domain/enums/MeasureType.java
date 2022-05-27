@@ -1,5 +1,15 @@
 package com.market.api.domain.enums;
 
+/**
+ * The enum Measure type.
+ */
 public enum MeasureType {
-  KG, UNIT
+  /**
+   * Kg measure type.
+   */
+  KG,
+  /**
+   * Unit measure type.
+   */
+  UNIT
 }

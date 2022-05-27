@@ -22,6 +22,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
   @Query(value = "Select p from Product p where p.name = :name and p.brand.name = :brand")
   Product findByNameAndBrandName(String name, String brand);
 
+  /**
+   * Find by name contains list.
+   *
+   * @param name the name
+   * @return the list
+   */
   @Query(value = "Select p from Product p where p.name LIKE %:name%")
   List<Product> findByNameContains(String name);
 

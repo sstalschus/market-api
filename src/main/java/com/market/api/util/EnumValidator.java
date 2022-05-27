@@ -21,32 +21,32 @@ import javax.validation.constraints.NotNull;
 @ReportAsSingleViolation
 public @interface EnumValidator {
 
-    /**
-     * Enum clazz class.
-     *
-     * @return the class
-     */
-    Class<? extends Enum<?>> enumClazz();
+  /**
+   * Enum clazz class.
+   *
+   * @return the class
+   */
+  Class<? extends Enum<?>> enumClazz();
 
-    /**
-     * Message string.
-     *
-     * @return the string
-     */
-    String message() default "Value is not valid";
+  /**
+   * Message string.
+   *
+   * @return the string
+   */
+  String message() default "Value is not valid";
 
-    /**
-     * Groups class [ ].
-     *
-     * @return the class [ ]
-     */
-    Class<?>[] groups() default {};
+  /**
+   * Groups class [ ].
+   *
+   * @return the class [ ]
+   */
+  Class<?>[] groups() default {};
 
-    /**
-     * Payload class [ ].
-     *
-     * @return the class [ ]
-     */
-    Class<? extends Payload>[] payload() default {};
+  /**
+   * Payload class [ ].
+   *
+   * @return the class [ ]
+   */
+  Class<? extends Payload>[] payload() default {};
 
 }

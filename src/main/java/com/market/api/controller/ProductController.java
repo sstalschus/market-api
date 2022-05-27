@@ -84,6 +84,12 @@ public class ProductController {
     );
   }
 
+  /**
+   * Gets by name.
+   *
+   * @param name the name
+   * @return the by name
+   */
   @GetMapping("/by")
   public ResponseEntity<List<ProductDTO>> getByName(@RequestParam String name) {
     return ResponseEntity.ok(

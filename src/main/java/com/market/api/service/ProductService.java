@@ -79,6 +79,12 @@ public class ProductService {
   }
 
 
+  /**
+   * Gets by name.
+   *
+   * @param name the name
+   * @return the by name
+   */
   public List<Product> getByName(String name) {
     return repository.findByNameContains(name);
   }
