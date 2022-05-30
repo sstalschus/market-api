@@ -25,6 +25,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Supplier {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -38,4 +39,5 @@ public class Supplier {
   @Column(nullable = false, updatable = false)
   @CreationTimestamp
   private Date createdAt;
+
 }

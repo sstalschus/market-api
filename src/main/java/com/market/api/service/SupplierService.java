@@ -1,8 +1,10 @@
 package com.market.api.service;
 
+import com.market.api.domain.Brand;
 import com.market.api.domain.Supplier;
 import com.market.api.exception.NotFoundException;
 import com.market.api.repository.SupplierRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,14 +17,18 @@ public class SupplierService {
 
   private final SupplierRepository repository;
 
+  private final BrandService brandService;
+
   /**
    * Instantiates a new Supplier service.
    *
-   * @param repository the repository
+   * @param repository   the repository
+   * @param brandService the brand service
    */
   @Autowired
-  public SupplierService(final SupplierRepository repository) {
+  public SupplierService(final SupplierRepository repository, final BrandService brandService) {
     this.repository = repository;
+    this.brandService = brandService;
   }
 
   /**
@@ -32,6 +38,17 @@ public class SupplierService {
    * @return the supplier
    */
   public Supplier create(Supplier supplier) {
+    List<Brand> brandList = new ArrayList<>();
+    for (Brand brand : supplier.getBrands()) {
+      Brand brandByName = brandService.getByName(brand.getName());
+      if (brandByName != null) {
+        brandList.add(brandByName);
+      } else {
+        brandList.add(brand);
+      }
+    }
+
+    supplier.setBrands(brandList);
     return repository.save(supplier);
   }
 
@@ -51,7 +68,8 @@ public class SupplierService {
    * @return the by id
    */
   public Supplier getById(Long id) {
-    return repository.findById(id).orElseThrow(() -> new NotFoundException("Supplier not founded by id: " + id));
+    return repository.findById(id)
+        .orElseThrow(() -> new NotFoundException("Supplier not founded by id: " + id));
   }
 
   /**
@@ -78,4 +96,5 @@ public class SupplierService {
   private void validateIfExists(Long id) {
     getById(id);
   }
+
 }
