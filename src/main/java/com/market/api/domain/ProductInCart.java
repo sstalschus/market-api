@@ -1,40 +1,37 @@
 package com.market.api.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-/**
- * The type Supplier.
- */
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Supplier {
+public class ProductInCart {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column
-  private String name;
+  @OneToOne
+  private Product product;
 
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  private List<Brand> brands;
+  @Column
+  private Integer quantity;
 
   @Column(nullable = false, updatable = false)
   @CreationTimestamp
