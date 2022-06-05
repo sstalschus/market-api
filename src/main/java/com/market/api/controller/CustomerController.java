@@ -1,7 +1,10 @@
 package com.market.api.controller;
 
-import com.market.api.domain.Supplier;
-import com.market.api.service.SupplierService;
+import com.market.api.controller.dto.CustomerDTO;
+import com.market.api.service.CustomerService;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,46 +17,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * The type Supplier controller.
+ * The type Customer controller.
  */
 @RestController
-@RequestMapping("/supplier")
-public class SupplierController {
+@RequestMapping("/customer")
+public class CustomerController {
 
-  private final SupplierService service;
+  private final CustomerService service;
 
   /**
-   * Instantiates a new Supplier controller.
+   * Instantiates a new Customer controller.
    *
    * @param service the service
    */
-  public SupplierController(final SupplierService service) {
+  public CustomerController(final CustomerService service) {
     this.service = service;
   }
 
   /**
    * Create response entity.
    *
-   * @param supplier the supplier
+   * @param customer the customer
    * @return the response entity
    */
   @PostMapping
-  public ResponseEntity create(@RequestBody Supplier supplier) {
-    service.create(supplier);
+  public ResponseEntity<CustomerDTO> create(@Valid @RequestBody CustomerDTO customer) {
     return ResponseEntity.status(HttpStatus.CREATED)
-        .build();
+        .body(CustomerDTO.convert(
+            service.create(CustomerDTO.convert(customer))
+        ));
   }
 
   /**
    * Update response entity.
    *
-   * @param supplier the supplier
+   * @param customer the customer
    * @return the response entity
    */
   @PatchMapping
-  public ResponseEntity update(@RequestBody Supplier supplier) {
-    service.update(supplier);
-    return ResponseEntity.status(HttpStatus.NON_AUTHORITATIVE_INFORMATION)
+  public ResponseEntity update(@Valid @RequestBody CustomerDTO customer) {
+    CustomerDTO.convert(
+        service.update(CustomerDTO.convert(customer))
+    );
+    return ResponseEntity.status(HttpStatus.NO_CONTENT)
         .build();
   }
 
@@ -63,8 +69,14 @@ public class SupplierController {
    * @return the all
    */
   @GetMapping
-  public ResponseEntity getAll() {
-    return ResponseEntity.ok(service.getAll());
+  public ResponseEntity<List<CustomerDTO>> getAll() {
+    return
+        ResponseEntity.ok(
+            service.getAll()
+                .stream()
+                .map(CustomerDTO::convert)
+                .collect(Collectors.toList())
+        );
   }
 
   /**
@@ -74,8 +86,10 @@ public class SupplierController {
    * @return the by id
    */
   @GetMapping("/{id}")
-  public ResponseEntity getById(@PathVariable Long id) {
-    return ResponseEntity.ok(service.getById(id));
+  public ResponseEntity<CustomerDTO> getById(@PathVariable Long id) {
+    return ResponseEntity.ok(
+        CustomerDTO.convert(service.getById(id))
+    );
   }
 
   /**
